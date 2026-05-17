@@ -3,6 +3,8 @@ use_frameworks!
 
 target 'iOSLearn' do
   pod 'LookinServer', :configurations => ['Debug']
+  pod 'Masonry'
+
 end
 
 post_install do |installer|
