@@ -7,15 +7,14 @@ class SwiftViewController: UIViewController {
         view.backgroundColor = .systemTeal
         
         let label = UILabel()
-        label.text = "Hello, Swift UIKit!"
+        label.text = "Hello, Swift UIKit + Masonry!"
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 24)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 20)
         view.addSubview(label)
         
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        // 使用 Masonry 在 Swift 中进行居中布局
+        label.mas_makeConstraints { make in
+            make?.center.equalTo()(self.view)
+        }
     }
 }

@@ -1,7 +1,7 @@
 #import "OCViewController.h"
+#import <Masonry/Masonry.h>
 
 @interface OCViewController ()
-
 @end
 
 @implementation OCViewController
@@ -12,16 +12,15 @@
     self.view.backgroundColor = [UIColor systemIndigoColor];
     
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"Hello, Objective-C UIKit!";
+    label.text = @"Hello, Objective-C UIKit + Masonry!";
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:24];
-    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.font = [UIFont boldSystemFontOfSize:20];
     [self.view addSubview:label];
     
-    [NSLayoutConstraint activateConstraints:@[
-        [label.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [label.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor]
-    ]];
+    // 使用 Masonry 进行居中布局
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
 }
 
 @end

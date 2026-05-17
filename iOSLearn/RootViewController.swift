@@ -20,13 +20,12 @@ class RootViewController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [ocButton, swiftButton])
         stack.axis = .vertical
         stack.spacing = 30
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(stack)
-        NSLayoutConstraint.activate([
-            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        
+        // 使用 Masonry 进行居中布局
+        stack.mas_makeConstraints { make in
+            make?.center.equalTo()(self.view)
+        }
     }
     
     @objc func gotoOC() {
