@@ -3,7 +3,8 @@ use_frameworks!
 
 target 'iOSLearn' do
   pod 'LookinServer', :configurations => ['Debug']
-  pod 'Masonry'
+  pod 'Masonry'    # OC 继续用
+  pod 'SnapKit'    # Swift 专用
 
 end
 

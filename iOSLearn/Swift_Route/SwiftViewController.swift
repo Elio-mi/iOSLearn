@@ -1,20 +1,19 @@
 import UIKit
+import SnapKit
 
 class SwiftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Swift 路线"
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .systemBackground
         
-        let label = UILabel()
-        label.text = "Hello, Swift UIKit + Masonry!"
-        label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 20)
-        view.addSubview(label)
+        let mainPageView = SwiftMainPageView()
         
-        // 使用 Masonry 在 Swift 中进行居中布局
-        label.mas_makeConstraints { make in
-            make?.center.equalTo()(self.view)
+        self.view.addSubview(mainPageView)
+        mainPageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.left.right.equalToSuperview()
         }
     }
 }
