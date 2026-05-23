@@ -46,10 +46,7 @@ class SwiftMainPageView: UIView {
         loadDataSource()
     }
     
-    // xib 构造器（Swift 强制要求）
-    required init?(coder: NSCoder) {
-        fatalError("没有使用 xib，所以直接报错")
-    }
+    required init?(coder: NSCoder) { nil } 
 }
 
 // UI部分
