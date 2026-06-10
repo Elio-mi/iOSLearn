@@ -5,6 +5,7 @@ target 'iOSLearn' do
   pod 'LookinServer', :configurations => ['Debug']
   pod 'Masonry'    # OC 继续用
   pod 'SnapKit'    # Swift 专用
+  pod 'libextobjc'
 
 end
 

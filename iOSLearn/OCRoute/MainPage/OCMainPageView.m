@@ -7,6 +7,7 @@
 
 #import "OCMainPageView.h"
 
+
 static NSString *cellID = @"CellID";
 
 @interface OCMainPageView() <UITableViewDataSource, UITableViewDelegate>
@@ -50,6 +51,7 @@ static NSString *cellID = @"CellID";
         _tableView.estimatedRowHeight = 53;
         _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.tableHeaderView.backgroundColor = UIColor.systemBackgroundColor;
+        _tableView.backgroundColor = UIColor.clearColor;
     }
     return _tableView;
 }
@@ -66,6 +68,7 @@ static NSString *cellID = @"CellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSArray *sectionData = self.dataSource[indexPath.section];
     NSArray *rowArray = sectionData[1];
     cell.textLabel.text = rowArray[indexPath.row];
@@ -79,6 +82,9 @@ static NSString *cellID = @"CellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 每个cell点击之后的行为
+    if (self.cellDidClickBlock) {
+        self.cellDidClickBlock();
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

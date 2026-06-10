@@ -2,7 +2,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OCViewController : UIViewController
+@interface OCMainPageViewController : UIViewController
 
 @end
 

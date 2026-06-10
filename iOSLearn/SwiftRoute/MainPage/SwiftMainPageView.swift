@@ -23,9 +23,9 @@ import SnapKit
 
 /// 属性 + 初始化
 class SwiftMainPageView: UIView {
-    
+
     private static let cellID = "CellID" /// 常量
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         /// tableView初始化三件套
@@ -36,17 +36,19 @@ class SwiftMainPageView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         return tableView;
     }()
-    
+
     // MARK: 数据源
     private var datasource: [[Any]] = []
-        
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
         loadDataSource()
     }
-    
-    required init?(coder: NSCoder) { nil } 
+
+    required init?(coder: NSCoder) { nil }
+
+    var cellDidClickBlock: (() -> Void)?
 }
 
 // UI部分
@@ -58,7 +60,7 @@ private extension SwiftMainPageView {
             make.edges.equalToSuperview()
         }
     }
-    
+
     func loadDataSource() {
         datasource = [
             [
@@ -75,40 +77,41 @@ private extension SwiftMainPageView {
                 ]
             ]
         ]
-        
+
         tableView.reloadData()
     }
 }
 
 /// UITableView的代理
 extension SwiftMainPageView:UITableViewDelegate, UITableViewDataSource {
-    
+
     /// tableView最小实现
-    
+
     /// 定义有几个section
     func numberOfSections(in tableview: UITableView) -> Int {
         return datasource.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rowArray = datasource[section][1] as? [String]
         return rowArray?.count ?? 0
     }
-    
+
     /// 定义每个cell怎么创建
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellID, for: indexPath)
+        cell.selectionStyle = .none
         let rowArray = datasource[indexPath.section][1] as? [String]
         cell.textLabel?.text = rowArray?[indexPath.row] ?? ""
         return cell
     }
-    
+
     /// 定义每个组的标题
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         datasource[section][0] as? String
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        cellDidClickBlock?()
     }
 }

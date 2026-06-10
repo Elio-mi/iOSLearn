@@ -1,14 +1,15 @@
-#import "OCViewController.h"
+#import "OCMainPageViewController.h"
 #import "OCMainPageView.h"
+#import "OCBaseViewController.h"
 
 
-@interface OCViewController ()
+@interface OCMainPageViewController ()
 
 @property (nonatomic, strong) OCMainPageView *mainPageView;
 
 @end
 
-@implementation OCViewController
+@implementation OCMainPageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +30,12 @@
 - (OCMainPageView *)mainPageView {
     if (!_mainPageView) {
         _mainPageView = [[OCMainPageView alloc] init];
+        @weakify(self)
+        _mainPageView.cellDidClickBlock = ^{
+            @strongify(self)
+            OCBaseViewController *viewController = [[OCBaseViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+        };
     }
     return _mainPageView;
 }

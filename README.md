@@ -6,10 +6,10 @@
 
 为了方便对比和独立学习，本工程拆分为两条平行的技术路线：
 
-- **Objective-C 路线 (`OC_Route/`)**：用于存放 Objective-C 相关的学习代码。
-- **Swift 路线 (`Swift_Route/`)**：用于存放 Swift 相关的学习代码。
+- **Objective-C 路线 (`OCRoute/`)**：用于存放 Objective-C 相关的学习代码。
+- **Swift 路线 (`SwiftRoute/`)**：用于存放 Swift 相关的学习代码。
 
-工程已经配置好 Bridging Header (`iOSLearn-Bridging-Header.h`)，支持 OC 与 Swift 混编。应用入口由 `AppDelegate.swift` 接管，并通过 `RootViewController` 分发两条技术路线的入口。
+工程已经配置好 Bridging Header (`iOSLearn-Bridging-Header.h`)，支持 OC 与 Swift 混编。应用入口由 `AppDelegate.swift` 接管，并通过 `RouteSelectionViewController` 分发两条技术路线的入口。
 
 ## 开发环境与依赖
 

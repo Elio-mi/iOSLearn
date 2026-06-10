@@ -5,6 +5,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <Masonry/Masonry.h>
+    #import <libextobjc/extobjc.h>
 #endif
 
 #endif /* PrefixHeader_pch */
